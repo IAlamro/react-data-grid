@@ -22,7 +22,7 @@ const loadMoreRowsClassname = css`
   padding: 8px 16px;
   position: absolute;
   bottom: 8px;
-  right: 8px;
+  left: 8px;
   color: white;
   line-height: 35px;
   background: rgba(0, 0, 0, 0.6);

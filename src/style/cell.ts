@@ -4,7 +4,7 @@ export const cell = css`
   contain: strict;
   contain: size layout style paint;
   padding: 0 8px;
-  border-right: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   background-color: inherit;
 

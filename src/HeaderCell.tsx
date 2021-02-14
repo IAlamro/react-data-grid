@@ -11,7 +11,7 @@ const cellResizable = css`
     cursor: col-resize;
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     bottom: 0;
     width: 10px;
   }
@@ -58,8 +58,8 @@ export default function HeaderCell<R, SR>({
     }
 
     const { currentTarget, pointerId } = event;
-    const { right } = currentTarget.getBoundingClientRect();
-    const offset = right - event.clientX;
+    const { left } = currentTarget.getBoundingClientRect();
+    const offset = left - event.clientX;
 
     if (offset > 11) { // +1px to account for the border size
       return;
@@ -71,7 +71,7 @@ export default function HeaderCell<R, SR>({
         onPointerUp();
         return;
       }
-      const width = event.clientX + offset - currentTarget.getBoundingClientRect().left;
+      const width = event.clientX + offset - currentTarget.getBoundingClientRect().right;
       if (width > 0) {
         onResize(column, width);
       }

@@ -23,7 +23,7 @@ css`
     opacity: 0;
     padding: 5px 0;
     pointer-events: none;
-    text-align: left;
+    text-align: right;
     transition: opacity 250ms ease !important;
   }
 
@@ -79,7 +79,7 @@ css`
     content: "▶";
     display: inline-block;
     position: absolute;
-    right: 7px;
+    left: 7px;
   }
 
   .example-multiple-targets::after {

@@ -67,7 +67,7 @@ export interface CalculatedColumn<TRow, TSummaryRow = unknown> extends Column<TR
 
 export interface ColumnMetric {
   width: number;
-  left: number;
+  right: number;
 }
 
 export interface Position {
@@ -113,7 +113,7 @@ export interface EditorProps<TRow, TSummaryRow = unknown> extends SharedEditorPr
   rowIdx: number;
   column: Readonly<CalculatedColumn<TRow, TSummaryRow>>;
   top: number;
-  left: number;
+  right: number;
 }
 
 export interface HeaderRendererProps<TRow, TSummaryRow = unknown> {

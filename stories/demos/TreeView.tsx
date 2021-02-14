@@ -109,7 +109,7 @@ export function TreeView() {
         name: 'format',
         formatter({ row, isCellSelected }) {
           const hasChildren = row.children !== undefined;
-          const style = !hasChildren ? { marginLeft: 30 } : undefined;
+          const style = !hasChildren ? { marginRight: 30 } : undefined;
           return (
             <>
               {hasChildren && (

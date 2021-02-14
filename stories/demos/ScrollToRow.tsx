@@ -34,7 +34,7 @@ export function ScrollToRow() {
   return (
     <>
       <div style={{ marginBottom: 5 }}>
-        <span style={{ marginRight: 5 }}>Row index: </span>
+        <span style={{ marginLeft: 5 }}>Row index: </span>
         <input
           style={{ width: 50 }}
           type="number"

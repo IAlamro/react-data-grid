@@ -44,11 +44,11 @@ test('basic keyboard navigation', () => {
   // arrow navigation
   userEvent.type(document.activeElement!, '{arrowdown}');
   validateCellPosition(0, 1);
-  userEvent.type(document.activeElement!, '{arrowright}');
+  userEvent.type(document.activeElement!, '{arrowleft}');
   validateCellPosition(1, 1);
   userEvent.type(document.activeElement!, '{arrowup}');
   validateCellPosition(1, 0);
-  userEvent.type(document.activeElement!, '{arrowleft}');
+  userEvent.type(document.activeElement!, '{arrowright}');
   validateCellPosition(0, 0);
 
   // page {up,down}/home/end navigation
@@ -78,13 +78,13 @@ test('at-bounds basic keyboard navigation', () => {
   // arrow navigation
   userEvent.type(document.activeElement!, '{arrowup}');
   validateCellPosition(0, 0);
-  userEvent.type(document.activeElement!, '{arrowleft}');
+  userEvent.type(document.activeElement!, '{arrowright}');
   validateCellPosition(0, 0);
   fireEvent.keyDown(document.activeElement!, { key: 'End', ctrlKey: true });
   validateCellPosition(6, 99);
   userEvent.type(document.activeElement!, '{arrowdown}');
   validateCellPosition(6, 99);
-  userEvent.type(document.activeElement!, '{arrowright}');
+  userEvent.type(document.activeElement!, '{arrowleft}');
   validateCellPosition(6, 99);
 
   // page {up,down}/home/end navigation

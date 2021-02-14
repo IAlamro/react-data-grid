@@ -87,7 +87,7 @@ export interface DataGridProps<R, SR = unknown> extends SharedDivProps {
   rows: readonly R[];
   /**
    * Rows to be pinned at the bottom of the rows view for summary, the vertical scroll bar will not scroll these rows.
-   * Bottom horizontal scroll bar can move the row left / right. Or a customized row renderer can be used to disabled the scrolling support.
+   * Bottom horizontal scroll bar can move the row right / left. Or a customized row renderer can be used to disabled the scrolling support.
    */
   summaryRows?: readonly SR[];
   /** The getter should return a unique key for each row */
@@ -218,7 +218,7 @@ function DataGrid<R, SR>({
    * states
    */
   const [scrollTop, setScrollTop] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+  const [scrollRight, setScrollRight] = useState(0);
   const [columnWidths, setColumnWidths] = useState<ReadonlyMap<string, number>>(() => new Map());
   const [selectedPosition, setSelectedPosition] = useState<SelectCellState | EditCellState<R>>({ idx: -1, rowIdx: -1, mode: 'SELECT' });
   const [copiedCell, setCopiedCell] = useState<{ row: R; columnKey: string } | null>(null);
@@ -255,7 +255,7 @@ function DataGrid<R, SR>({
   const { columns, viewportColumns, layoutCssVars, columnMetrics, totalColumnWidth, lastFrozenColumnIndex, totalFrozenColumnWidth, groupBy } = useViewportColumns({
     rawColumns,
     columnWidths,
-    scrollLeft,
+    scrollRight,
     viewportWidth: gridWidth,
     defaultColumnOptions,
     rawGroupBy: rowGrouper ? rawGroupBy : undefined
@@ -423,9 +423,9 @@ function DataGrid<R, SR>({
       && selectedPosition.idx === -1
       && (
         // Collapse the current group row if it is focused and is in expanded state
-        (key === 'ArrowLeft' && row.isExpanded)
+        (key === 'ArrowRight' && row.isExpanded)
         // Expand the current group row if it is focused and is in collapsed state
-        || (key === 'ArrowRight' && !row.isExpanded)
+        || (key === 'ArrowLeft' && !row.isExpanded)
       )) {
       event.preventDefault(); // Prevents scrolling
       toggleGroup(row.id);
@@ -439,8 +439,8 @@ function DataGrid<R, SR>({
         return;
       case 'ArrowUp':
       case 'ArrowDown':
-      case 'ArrowLeft':
       case 'ArrowRight':
+      case 'ArrowLeft':
       case 'Tab':
       case 'Home':
       case 'End':
@@ -459,9 +459,9 @@ function DataGrid<R, SR>({
   }
 
   function handleScroll(event: React.UIEvent<HTMLDivElement>) {
-    const { scrollTop, scrollLeft } = event.currentTarget;
+    const { scrollTop, scrollRight } = event.currentTarget;
     setScrollTop(scrollTop);
-    setScrollLeft(scrollLeft);
+    setScrollRight(scrollRight);
     onScroll?.(event);
   }
 
@@ -666,13 +666,13 @@ function DataGrid<R, SR>({
 
     if (typeof idx === 'number' && idx > lastFrozenColumnIndex) {
       const { clientWidth } = current;
-      const { left, width } = columnMetrics.get(columns[idx])!;
-      const isCellAtLeftBoundary = left < scrollLeft + totalFrozenColumnWidth;
-      const isCellAtRightBoundary = left + width > clientWidth + scrollLeft;
-      if (isCellAtLeftBoundary) {
-        current.scrollLeft = left - totalFrozenColumnWidth;
-      } else if (isCellAtRightBoundary) {
-        current.scrollLeft = left + width - clientWidth;
+      const { right, width } = columnMetrics.get(columns[idx])!;
+      const isCellAtRightBoundary = right < scrollRight + totalFrozenColumnWidth;
+      const isCellAtLeftBoundary = right + width > clientWidth + scrollRight;
+      if (isCellAtRightBoundary) {
+        current.scrollRight = right - totalFrozenColumnWidth;
+      } else if (isCellAtLeftBoundary) {
+        current.scrollRight = right + width - clientWidth;
       }
     }
 
@@ -694,7 +694,7 @@ function DataGrid<R, SR>({
 
     // If a group row is focused, and it is collapsed, move to the parent group row (if there is one).
     if (
-      key === 'ArrowLeft'
+      key === 'ArrowRight'
       && isRowSelected
       && isGroupRow(row)
       && !row.isExpanded
@@ -718,9 +718,9 @@ function DataGrid<R, SR>({
         return { idx, rowIdx: rowIdx - 1 };
       case 'ArrowDown':
         return { idx, rowIdx: rowIdx + 1 };
-      case 'ArrowLeft':
-        return { idx: idx - 1, rowIdx };
       case 'ArrowRight':
+        return { idx: idx - 1, rowIdx };
+      case 'ArrowLeft':
         return { idx: idx + 1, rowIdx };
       case 'Tab':
         if (selectedPosition.idx === -1 && selectedPosition.rowIdx === -1) {

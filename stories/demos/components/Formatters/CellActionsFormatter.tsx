@@ -6,11 +6,11 @@ import { createPortal } from 'react-dom';
 import { css } from '@linaria/core';
 
 const cellActionClassname = css`
-  float: right;
+  float: left;
 `;
 
 const cellActionLastClassname = css`
-  margin-right: -8px;
+  margin-left: -8px;
 `;
 
 const cellActionButtonClassname = css`
@@ -31,10 +31,10 @@ const cellActionMenuClassname = css`
   position: absolute;
   top: 100%;
   z-index: 1000;
-  float: left;
+  float: right;
   min-width: 160px;
   padding: 5px 0;
-  text-align: left;
+  text-align: right;
   list-style: none;
   background-color: #fff;
   background-clip: padding-box;

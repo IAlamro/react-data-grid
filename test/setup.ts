@@ -23,13 +23,13 @@ Object.defineProperties(HTMLDivElement.prototype, {
 });
 
 // Basic scroll polyfill
-const scrollStates = new WeakMap<Element, { scrollTop: number; scrollLeft: number }>();
+const scrollStates = new WeakMap<Element, { scrollTop: number; scrollRight: number }>();
 
 function getScrollState(div: Element) {
   if (scrollStates.has(div)) {
     return scrollStates.get(div)!;
   }
-  const scrollState = { scrollTop: 0, scrollLeft: 0 };
+  const scrollState = { scrollTop: 0, scrollRight: 0 };
   scrollStates.set(div, scrollState);
   return scrollState;
 }
@@ -44,12 +44,12 @@ Object.defineProperties(Element.prototype, {
       this.dispatchEvent(new Event('scroll'));
     }
   },
-  scrollLeft: {
+  scrollRight: {
     get(this: Element) {
-      return getScrollState(this).scrollLeft;
+      return getScrollState(this).scrollRight;
     },
     set(this: Element, value: number) {
-      getScrollState(this).scrollLeft = value;
+      getScrollState(this).scrollRight = value;
       this.dispatchEvent(new Event('scroll'));
     }
   }

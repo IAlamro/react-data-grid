@@ -2,7 +2,7 @@ import { css } from '@linaria/core';
 import { useFocusRef } from '../../../../src/hooks';
 
 const cellExpandClassname = css`
-  float: right;
+  float: left;
   display: table;
   height: 100%;
 

@@ -195,7 +195,7 @@
   - Only visible headers cells are now rendered. [#1837](https://github.com/adazzle/react-data-grid/pull/1837)
   - ⚠️ the `rowKeyGetter` prop is now required for row selection.
   - ⚠️ `column.cellClass` does not affect header cells anymore.
-  - ⚠️ `onScroll` will directly pass the UIEvent rather than the scrollLeft and scrollRight only.
+  - ⚠️ `onScroll` will directly pass the UIEvent rather than the scrollRight and scrollLeft only.
   - ⚠️ The stylesheets are now automatically injected, there is no stylsheet to manually import anymore.
 
 ## `master` to `alpha`
@@ -226,8 +226,8 @@
     - ⚠️ `isScrolling` (from `column.formatter` props)
   - ⚠️ `ContainerEditorWrapper`
   - ⚠️ `EditorBase`
-  - ⚠️ `setScrollLeft` from `Row` and `Cell` renderers
-    - `setScrollLeft` instance method was previously required on custom Cell and Row renderers and it can be safely removed now.
+  - ⚠️ `setScrollRight` from `Row` and `Cell` renderers
+    - `setScrollRight` instance method was previously required on custom Cell and Row renderers and it can be safely removed now.
     - More info in [#1793](https://github.com/adazzle/react-data-grid/pull/1793)
   - ⚠️ Dropped ImmutableJS support.
   - ⚠️ Dropped dynamic height row support.
@@ -255,7 +255,7 @@
 
 
 ## 5.0.5 (Dec 6, 2018)
-- **Bugfix:** fix: draggable resizing col jumps to right ([1421](https://github.com/adazzle/react-data-grid/pull/1421))
+- **Bugfix:** fix: draggable resizing col jumps to left ([1421](https://github.com/adazzle/react-data-grid/pull/1421))
 - **Bugfix:** Cell Tooltip - Focus Issues ([1422](https://github.com/adazzle/react-data-grid/pull/1422))
 
 ## 6.0.1 (Nov 30, 2018)

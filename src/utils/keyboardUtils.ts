@@ -17,8 +17,8 @@ const nonInputKeys = new Set([
   'Tab',
   // Navigation keys
   'ArrowDown',
-  'ArrowLeft',
   'ArrowRight',
+  'ArrowLeft',
   'ArrowUp',
   'End',
   'Home',

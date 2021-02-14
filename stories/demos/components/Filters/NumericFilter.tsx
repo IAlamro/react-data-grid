@@ -49,7 +49,7 @@ export function NumericFilter<R, SR>({ value, column, onChange }: FilterRenderer
         onChange={handleChange}
         onKeyDown={handleKeyDown}
       />
-      <span style={{ paddingLeft: 4, cursor: 'help' }} title={tooltipText}>?</span>
+      <span style={{ paddingRight: 4, cursor: 'help' }} title={tooltipText}>?</span>
     </div>
   );
 }

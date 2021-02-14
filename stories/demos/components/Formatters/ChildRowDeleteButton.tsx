@@ -10,14 +10,14 @@ const childRowActionCrossClassname = css`
   }
 
   &::before {
-    left: 21px;
+    right: 21px;
     width: 1px;
     height: 100%;
   }
 
   &::after {
     top: 50%;
-    left: 20px;
+    right: 20px;
     height: 1px;
     width: 15px;
   }
@@ -30,7 +30,7 @@ const childRowActionCrossClassname = css`
 const childRowButtonClassname = css`
   cursor: pointer;
   position: absolute;
-  left: 21px;
+  right: 21px;
   transform: translateX(-50%);
   filter: grayscale(1);
 `;

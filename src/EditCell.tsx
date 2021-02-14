@@ -30,12 +30,12 @@ export default function EditCell<R, SR>({
   editorProps,
   ...props
 }: EditCellProps<R, SR>) {
-  const [dimensions, setDimensions] = useState<{ left: number; top: number } | null>(null);
+  const [dimensions, setDimensions] = useState<{ right: number; top: number } | null>(null);
 
   const cellRef = useCallback(node => {
     if (node !== null) {
-      const { left, top } = node.getBoundingClientRect();
-      setDimensions({ left, top });
+      const { right, top } = node.getBoundingClientRect();
+      setDimensions({ right, top });
     }
   }, []);
 
@@ -50,9 +50,9 @@ export default function EditCell<R, SR>({
 
   function getCellContent() {
     if (dimensions === null) return;
-    const { scrollTop: docTop, scrollLeft: docLeft } = document.scrollingElement ?? document.documentElement;
-    const { left, top } = dimensions;
-    const gridLeft = left + docLeft;
+    const { scrollTop: docTop, scrollRight: docRight } = document.scrollingElement ?? document.documentElement;
+    const { right, top } = dimensions;
+    const gridRight = right + docRight;
     const gridTop = top + docTop;
 
     return (
@@ -60,7 +60,7 @@ export default function EditCell<R, SR>({
         {...editorProps}
         rowIdx={rowIdx}
         column={column}
-        left={gridLeft}
+        right={gridRight}
         top={gridTop}
       />
     );

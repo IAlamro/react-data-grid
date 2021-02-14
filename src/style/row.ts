@@ -8,7 +8,7 @@ export const row = css`
   grid-template-rows: var(--row-height);
   grid-template-columns: var(--template-columns);
   position: absolute;
-  left: 0;
+  right: 0;
   width: var(--row-width);
   height: var(--row-height); // needed on Firefox
   line-height: var(--row-height);

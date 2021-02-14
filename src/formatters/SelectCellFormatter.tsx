@@ -9,10 +9,10 @@ const checkboxLabel = css`
   justify-content: center;
   position: absolute;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
-  margin-right: 1px; // align checkbox in row group cell
+  bottom: 0;
+  right: 0;
+  margin-left: 1px; // align checkbox in row group cell
 `;
 
 const checkboxLabelClassname = `rdg-checkbox-label ${checkboxLabel}`;
